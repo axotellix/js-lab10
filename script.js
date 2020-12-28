@@ -326,9 +326,6 @@ canv.addEventListener('click', e => {
         let tileX, tileY;                   // set > tile number
         let size = (canv.width - gap * 2) / 3;
     
-        // increase > moves counter
-        mc++;
-    
         // get > clicked tile
         for(let t in tiles) {
             if(x >= tiles[t][0] && x <= tiles[t][1]) {
@@ -344,6 +341,7 @@ canv.addEventListener('click', e => {
         ctx.lineWidth = 5;
     
         if( (tileX && tileY) !== undefined && checkMoves(_tileX, _tileY)) {
+            mc++;   // increase > moves counter
             active_player ? drawX(tiles[tileX][0], tiles[tileY][0], size) : drawO(tiles[tileX][0], tiles[tileY][0], size);
             field[tileY - 1][tileX - 1] = active_player;
     
