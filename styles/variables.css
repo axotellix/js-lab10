@@ -1,0 +1,25 @@
+/* [ VARIABLES ] */
+
+:root {
+    
+    /* colours */
+    --white: rgb(239, 240, 243);
+    --d-white: rgb(207, 208, 211);
+    --black: #0b0a0c;
+    --grey: #201e25;
+    --d-grey: #16151a;
+    --l-grey: #4f4a5e;
+    --yellow: #F9CA24;
+    --red: #b14c4c;
+    --green: #0f8a71;
+    --purple: #8d33e0;
+    --d-purple: #662a9e;
+    
+    /* fonts */
+    --font-size: 10px;
+    --font-bold: 700;
+    --font-semibold: 500;
+    --font-normal: 400;
+    --font-light: 300;
+    
+}
