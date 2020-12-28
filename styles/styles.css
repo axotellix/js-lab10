@@ -1,0 +1,142 @@
+/*  [ GENERAL ]  */
+
+:root {
+    --padding: 1.5rem;
+ }
+ 
+ 
+ * {
+     box-sizing: border-box;
+     font-family: 'Montserrat';
+     
+ }
+ 
+ body {
+     margin: 0;
+     background: var(--black);
+     color: var(--l-grey);
+     font-size: var(--font-size);
+     font-family: 'Montserrat';
+ }
+ 
+ /*  [ GAME TITLES ]  */
+ div#game-title {
+     width: 550px;
+     height: auto;
+     padding: 20px 0;
+     margin: 0 auto;
+     background: var(--grey);
+     border-bottom: 2px solid var(--purple);
+     overflow: hidden;
+     margin-bottom: 25px;
+     box-sizing: content-box;
+ }
+ h1, h3 {
+     color: var(--d-white);
+     font-weight: var(--font-normal);
+     text-align: center;
+ }
+ h1 {
+     font-size: 3em;
+     font-weight: var(--font-semibold);
+     line-height: 0.4;
+ }
+ h3 {
+     font-size: 1.7em;
+     line-height: 0.4;
+     color: var(--l-grey);
+ }
+ 
+ 
+ /*  [ INFO PANEL ]  */
+ div.score-container, div.move-container {
+     display: flex;
+     margin: 0 auto;
+     width: 350px;
+     justify-content: space-between;
+     align-items: center;
+ }
+ div.score {
+     width: 150px;
+     height: 40px;
+     border-radius: 100px;
+     background: var(--grey);
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     padding: 0 20px;
+     font-size: 1.5em;
+     font-weight: var(--font-bold);
+     color: var(--l-grey);
+ }
+ div.score span {
+     margin-left: 10px;
+ }
+ div.move-container {
+     justify-content: center;
+     margin-top: 10px;
+ }
+ p {
+     font-size: 1.6em;
+ }
+ p.heading {
+     font-weight: var(--font-bold);
+     margin-right: 10px;
+ }
+ p.subheading {
+     font-weight: var(--font-semibold);
+ }
+ p#score { font-weight: var(--font-semibold); }
+ span.score#player1 { margin-right: 50px; }
+ 
+ 
+ /*  [ GAME CANVAS ]  */
+ canvas#tic {
+     display: block;
+     margin: 0 auto;
+     margin-bottom: 30px;
+     cursor: pointer;
+ }
+ 
+ /*  [ GAME CONTROLS ]  */
+ div.ctrls-container {
+     width: 550px;
+     margin: 0 auto;
+     display: flex;
+     justify-content: center;
+ }
+ button.game-ctrls {
+     min-width: 180px;
+     height: 40px;
+     border: 0;
+     border-radius: 100px;
+     outline: none;
+     cursor: pointer;
+     margin: 15px;
+     font-size: 1.4em;
+     color: var(--white);
+     background: var(--grey);
+     font-weight: var(--font-semibold);
+     transition: background 0.25s, color 0.25s;
+ }
+ button.game-ctrls#new-round {
+     color: var(--green);
+ }
+ button.game-ctrls#new-round:hover {
+     background: var(--green);
+     color: var(--white);
+ }
+ button.game-ctrls#reset {
+     color: var(--red);
+ }
+ button.game-ctrls#reset:hover {
+     background: var(--red);
+     color: var(--white);
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
