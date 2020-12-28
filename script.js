@@ -258,3 +258,112 @@ const checkWin = () => {
         ctx.fillText('Ничья', w / 2, h / 2 - marg);
     }
 };
+  
+
+// [ CANVAS ]
+  
+ // create > canvas
+let canv = document.querySelector('#tic');
+let ctx  = canv.getContext('2d');
+   
+ // set > canvas size
+canv.width  = w;
+canv.height = h; 
+  
+ // draw > game field (tiles)
+drawField(black, gap);
+   
+ // canvas > hover action
+let _tileX, _tileY;
+document.body.addEventListener('mousemove', e => {
+    if(gameActive) {
+  
+        let canvXY = canv.getBoundingClientRect();
+
+        let x = e.clientX - canvXY.left;    // set > position of click inside canvas [x coord]
+        let y = e.clientY - canvXY.top;     // set > position of click inside canvas [y coord]
+        let tileX, tileY;                   // set > tile number
+        let size = (canv.width - gap * 2) / 3;
+        
+        if( (_tileX && _tileY) !== undefined ) {
+            ctx.fillStyle = black;
+            if(checkMoves(_tileX, _tileY)) {
+                ctx.fillRect(tiles[_tileX][0], tiles[_tileY][0], size, size);
+            }
+        }
+
+        for(let t in tiles) {
+            if(x >= tiles[t][0] && x <= tiles[t][1]) {
+                tileX = t;
+                _tileX = tileX;
+            }
+            if(y >= tiles[t][0] && y <= tiles[t][1]) {
+                tileY = t;
+                _tileY = tileY;
+            }
+        }
+    
+        if( (tileX && tileY) !== undefined ) {
+            ctx.fillStyle = lblack;
+            if(checkMoves(tileX, tileY)) {
+                ctx.fillRect(tiles[tileX][0], tiles[tileY][0], size, size);
+            }
+        } 
+  
+    } 
+});
+  
+  
+ // canvas > onclick action
+let active_player = true;                   //: first move - first player
+canv.addEventListener('click', e => {
+    if(gameActive) {
+  
+        let canvXY = canv.getBoundingClientRect();
+
+        let x = e.clientX - canvXY.left;    // set > position of click inside canvas [x coord]
+        let y = e.clientY - canvXY.top;     // set > position of click inside canvas [y coord]
+        let tileX, tileY;                   // set > tile number
+        let size = (canv.width - gap * 2) / 3;
+    
+        // increase > moves counter
+        mc++;
+    
+        // get > clicked tile
+        for(let t in tiles) {
+            if(x >= tiles[t][0] && x <= tiles[t][1]) {
+                tileX = parseInt(t);
+            }
+            if(y >= tiles[t][0] && y <= tiles[t][1]) {
+                tileY = parseInt(t);
+            }
+        }
+        
+        // make > move (draw 'x' / 'o')
+        ctx.strokeStyle = purple;
+        ctx.lineWidth = 5;
+    
+        if( (tileX && tileY) !== undefined && checkMoves(_tileX, _tileY)) {
+            active_player ? drawX(tiles[tileX][0], tiles[tileY][0], size) : drawO(tiles[tileX][0], tiles[tileY][0], size);
+            field[tileY - 1][tileX - 1] = active_player;
+    
+            markAxe(active_player, tileX, tileY);
+            active_player = !active_player;
+        }
+        
+        // check > if a player has won
+        checkWin();
+
+    }
+});
+  
+nround.addEventListener('click', () => {
+    init();
+    drawField(black, gap);
+});
+reset.addEventListener('click', () => {
+    init(true);
+    drawField(black, gap);
+});
+
+
