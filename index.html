@@ -2,10 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic Tac Toe, bitch!</title>
+    <script src = "script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href = "styles/variables.css">
+    <link rel = "stylesheet" href = "styles/styles.css">
 </head>
 <body>
+ 
+    <!--  [ GAME TITLE ]  -->
+    <div id = 'game-title'>
+        <h1>Крестики-Нолики</h1>
+        <h3>Игра, знакомая с детства</h3>
+    </div>
     
+
+    <!--  [ INFO PANEL ]  -->
+    <div class="score-container">
+        <div class = "score">
+            Крестик:<span id = 'player1'>0</span>
+        </div>
+        <div class = "score">
+            Нолик:<span id = 'player2'>0</span>
+        </div>
+    </div>
+
+    <div class="move-container">
+        <p class = "heading">Ход:</p>
+        <p class = "subheading" id = 'turn'>игрок номер 1 [x]</p>
+    </div> 
+
+    <!--  [ GAME CANVAS ]  -->
+    <canvas id = "tic"></canvas>
+
+    <div class="ctrls-container">
+        <button class="game-ctrls" id = 'new-round'>Новый раунд</button>
+        <button class="game-ctrls" id = 'reset'>Сбросить</button>
+    </div>
+    
+
 </body>
 </html>
