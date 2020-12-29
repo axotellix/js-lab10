@@ -18,6 +18,7 @@ let gameActive = true;  // set > game state (active | inactive)
 let mc = 0;             // set > moves counter
 let p1_score = 0;       // set > player 1 score
 let p2_score = 0;       // set > player 2 score
+let ap = ['игрок номер 1 [x]', 'игрок номер 2 [o]']
   
  // [ tiles coords ]
 let tiles = {
@@ -249,7 +250,9 @@ const checkWin = () => {
     }
     if(mc == 9) {
         let marg = 30;
-
+        
+        gameActive = false;     //: to prevent hover & click events
+        
         ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
         ctx.fillRect(0, 0, w, h);
         ctx.fillStyle = 'rgb(207, 208, 211)';
@@ -341,12 +344,17 @@ canv.addEventListener('click', e => {
         ctx.lineWidth = 5;
     
         if( (tileX && tileY) !== undefined && checkMoves(_tileX, _tileY)) {
+            let t = document.getElementById('turn');
+
             mc++;   // increase > moves counter
             active_player ? drawX(tiles[tileX][0], tiles[tileY][0], size) : drawO(tiles[tileX][0], tiles[tileY][0], size);
             field[tileY - 1][tileX - 1] = active_player;
-    
+            
             markAxe(active_player, tileX, tileY);
+
+            // set > active player & turn
             active_player = !active_player;
+            active_player ? t.textContent = ap[0] : t.textContent = ap[1];
         }
         
         // check > if a player has won
